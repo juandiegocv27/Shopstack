@@ -1,0 +1,14 @@
+# AWS Region
+aws_region = "us-east-1"
+
+# Environment
+environment = "dev"
+
+# Project Name
+project_name = "infra-terraform"
+
+# VPC Configuration
+vpc_cidr = "10.0.0.0/16"
+
+# Availability Zones
+availability_zones = ["us-east-1a", "us-east-1b"]
