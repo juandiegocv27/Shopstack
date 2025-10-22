@@ -46,21 +46,21 @@ terraform plan
 terraform apply
 ```
 
-2. Cluster Creation
+### 2. Cluster Creation
 
 Switch to the cluster-gitops repository and create the local Kind cluster:
 ```bash
 cd ../cluster-gitops
 kind create cluster --name shopstack --config kind-config.yaml
 ```
-3. Validation
+### 3. Validation
 
 Verify cluster readiness:
 ```bash
 kubectl get nodes
 kubectl get pods -n kube-system | grep coredns
 ```
-4. Repeatability Test
+### 4. Repeatability Test
 
 Run automated validation:
 ```bash
@@ -70,7 +70,7 @@ Results are saved to repeat.log.
 
 ---
 
-🔒 Security Notes
+## 🔒 **Security Notes**
     - No public endpoints exposed (local Kind cluster).
 	- Kubeconfig protected with:
 ```plaintext
@@ -81,7 +81,7 @@ Terraform state secured in private AWS S3 bucket with DynamoDB locking.
 
 ---
 
-🧩 Future Improvements
+## 🧩 **Future Improvements**
 
 	- Add CI/CD pipeline for infrastructure changes.
 	- Integrate EKS managed cluster for cloud testing.
@@ -89,7 +89,7 @@ Terraform state secured in private AWS S3 bucket with DynamoDB locking.
 	- Automate bootstrap across all repositories with a unified Makefile.
 ---
 
-🗂️ Folder Structure
+## 🗂️ **Folder Structure**
 ```bash
 infra-terraform/
 ├── envs/
@@ -105,7 +105,7 @@ infra-terraform/
 ```
 ---
 
-🧭 Additional Documentation
+## 🧭 **Additional Documentation**
 
 This document complements:
 ```plaintext
