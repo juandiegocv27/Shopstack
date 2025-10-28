@@ -1,4 +1,17 @@
+# Terraform
 .terraform/
 *.tfstate*
 .crash
 *.lock.hcl
+*.tfstate.backup
+.terraform.lock.hcl
+
+
+# AWS credentials
+*.pem
+*.key
+
+# Editor files
+.DS_Store
+.idea/
+.vscode/
