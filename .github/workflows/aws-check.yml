@@ -1,0 +1,21 @@
+name: AWS Identity Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  aws-info:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Show AWS info
+        run: |
+          echo "AWS Region: ${{ secrets.AWS_REGION }}"
+          aws sts get-caller-identity
