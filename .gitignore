@@ -1,3 +1,19 @@
+# Talos / Kubernetes credentials
+talos/talosconfig
+talos/kubeconfig
+talos/controlplane.yaml
+talos/worker.yaml
+talos/*.pem
+talos/*.key
+talos/*.crt
+talos/*.csr
+talos/support-*.zip
+
+# Local Kubectl
+.kube/
+*.log
+
+
 # Terraform
 .terraform/
 *.tfstate*
@@ -5,7 +21,9 @@
 *.lock.hcl
 *.tfstate.backup
 .terraform.lock.hcl
-
+crash.log
+*.tfvars
+*.tfvars.json
 
 # AWS credentials
 *.pem
@@ -15,3 +33,5 @@
 .DS_Store
 .idea/
 .vscode/
+*.swp
+
