@@ -8,6 +8,7 @@ talos/*.key
 talos/*.crt
 talos/*.csr
 talos/support-*.zip
+talos_backup_*/talos_backup_*/talos_backup_*/
 
 # Local Kubectl
 .kube/
@@ -29,9 +30,16 @@ crash.log
 *.pem
 *.key
 
-# Editor files
+# file editors
 .DS_Store
 .idea/
 .vscode/
 *.swp
 
+
+kubeconfig*
+cilium-quick-install.yaml
+talos_backup_*/
+*.backup
+*.tfstate
+*.tfstate.*

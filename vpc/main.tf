@@ -17,11 +17,11 @@ module "vpc" {
   private_subnets = var.private_subnet_cidrs
 
   # Enable NAT Gateway for outbound traffic from private subnets
-  enable_nat_gateway   = true
+  enable_nat_gateway   = false
 
   # Create one NAT Gateway per AZ for high availability
   single_nat_gateway   = false   
-  one_nat_gateway_per_az = true
+  one_nat_gateway_per_az = false
 
   # Enable DNS hostnames and DNS resolution support within the VPC
   enable_dns_hostnames = true
