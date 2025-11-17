@@ -15,14 +15,4 @@ module "network" {
   private_subnet_cidrs = ["10.0.10.0/24", "10.0.11.0/24"]
 }
 
-module "worker" {
-  source = "../../ec2"
 
-  project           = local.project
-  env               = local.env
-  vpc_id            = module.network.vpc_id
-  public_subnet_ids = module.network.public_subnet_ids
-
-  talos_ami_id       = "ami-013b54d09638284e9"
-  control_plane_cidr = "177.93.0.152/32"
-}
