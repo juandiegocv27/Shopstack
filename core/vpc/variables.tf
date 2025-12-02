@@ -8,9 +8,10 @@ variable "env" {
   default = "dev"
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "region" {
-  type    = string
-  default = "us-east-1"
+  type        = string
+  description = "AWS region (currently unused in this module)"
 }
 
 variable "vpc_cidr" {
