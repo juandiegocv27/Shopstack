@@ -1,3 +1,8 @@
+> [!NOTE]  
+> Experimental VPC module.  
+> Not used by any environment in infra v1.  
+> Reserved for future refactors (infra v2).
+
 # vpc
 
 <!-- BEGIN_TF_DOCS -->

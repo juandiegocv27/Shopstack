@@ -43,3 +43,10 @@ talos_backup_*/
 *.backup
 *.tfstate
 *.tfstate.*
+
+# Terraform local state (bootstrap)
+backend/
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl

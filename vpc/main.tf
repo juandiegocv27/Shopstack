@@ -2,6 +2,9 @@ provider "aws" {
   region = var.region
 }
 
+
+# Base VPC module for the ShopStack environment.
+# Uses terraform-aws-modules/vpc. NAT Gateway is disabled to reduce cost.
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
