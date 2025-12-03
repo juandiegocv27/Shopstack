@@ -1,34 +1,34 @@
 variable "project" {
-  type    = string
-  default = "shopstack"
+  type        = string
+  description = "Project name used for resource naming and tagging."
 }
 
 variable "env" {
-  type    = string
-  default = "dev"
+  type        = string
+  description = "Deployment environment (e.g., dev, prod)."
 }
 
 variable "region" {
-  type    = string
-  default = "us-east-1"
+  type        = string
+  description = "AWS region where the VPC resources are created."
 }
 
 variable "vpc_cidr" {
-  type    = string
-  default = "10.0.0.0/16"
+  type        = string
+  description = "Primary CIDR block for the VPC."
 }
 
 variable "azs" {
-  type    = list(string)
-  default = ["us-east-1a", "us-east-1b"]
+  type        = list(string)
+  description = "List of Availability Zones where subnets will be created."
 }
 
 variable "public_subnet_cidrs" {
-  type    = list(string)
-  default = ["10.0.0.0/24", "10.0.1.0/24"]
+  type        = list(string)
+  description = "List of CIDR blocks for the public subnets."
 }
 
 variable "private_subnet_cidrs" {
-  type    = list(string)
-  default = ["10.0.10.0/24", "10.0.11.0/24"]
+  type        = list(string)
+  description = "List of CIDR blocks for the private subnets."
 }

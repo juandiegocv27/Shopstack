@@ -1,0 +1,5 @@
+machine:
+  time:
+    servers:
+      - time.google.com
+      - pool.ntp.org
