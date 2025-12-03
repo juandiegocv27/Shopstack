@@ -151,6 +151,10 @@ infra-terraform/
 └── docs/
     └── ARCHITECTURE.md
 ```
+# Architecture Overview
+
+![Architecture Overview](ARCHITECTURE_OVERVIEW.png)
+
 ---
 
 ## 🧭 **Additional Documentation**
