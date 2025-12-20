@@ -52,7 +52,7 @@ jobs:
         run: terraform -chdir=envs/dev plan -no-color -out=plan.tfplan
 
       - name: Render plan to text
-        run: terraform -chdir=envs/dev show -no-color plan.tfplan > plan.txt
+        run: terraform -chdir=envs/dev show -no-color plan.tfplan > envs/dev/plan.txt
 
       - name: Upload plan artifact
         uses: actions/upload-artifact@v4
