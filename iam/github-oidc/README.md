@@ -32,7 +32,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | n/a | `string` | `"us-east-1"` | no |
-| <a name="input_github_repo"></a> [github\_repo](#input\_github\_repo) | OWNER/REPO | `string` | n/a | yes |
+| <a name="input_github_repo"></a> [github\_repo](#input\_github\_repo) | Formato OWNER/REPO (ej: juandiegocv27/infra-terraform) | `string` | n/a | yes |
 
 ## Outputs
 
