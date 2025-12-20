@@ -1,14 +1,85 @@
 name: terraform-ci
+
 on:
   pull_request:
+    paths:
+      - "envs/**"
+      - ".github/workflows/terraform-ci.yml"
   push:
-    paths: ["envs/**", ".github/workflows/terraform-ci.yml"]
+    paths:
+      - "envs/**"
+      - ".github/workflows/terraform-ci.yml"
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: terraform-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  fmt-validate:
+  fmt-validate-plan:
+    name: fmt/validate/plan (envs/dev)
     runs-on: ubuntu-latest
+    environment: ci
+
     steps:
       - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
-      - run: terraform -chdir=envs/dev fmt -check
-      - run: terraform -chdir=envs/dev init -backend=false
-      - run: terraform -chdir=envs/dev validate
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Terraform fmt (check)
+        run: terraform -chdir=envs/dev fmt -check -recursive
+
+      - name: Terraform init
+        run: terraform -chdir=envs/dev init -no-color
+
+      - name: Terraform validate
+        run: terraform -chdir=envs/dev validate -no-color
+
+      - name: Terraform plan
+        run: terraform -chdir=envs/dev plan -no-color -out=plan.tfplan
+
+      - name: Render plan to text
+        run: terraform -chdir=envs/dev show -no-color plan.tfplan > plan.txt
+
+      - name: Upload plan artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: terraform-plan-${{ github.event.pull_request.number || github.run_number }}
+          path: |
+            envs/dev/plan.tfplan
+            envs/dev/plan.txt
+          retention-days: 7
+
+      - name: Comment plan (PR only)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const plan = fs.readFileSync('envs/dev/plan.txt', 'utf8');
+            const body = [
+              '### Terraform Plan (envs/dev)',
+              '',
+              '```',
+              plan.length > 60000 ? plan.slice(0, 60000) + '\n... (truncado)' : plan,
+              '```'
+            ].join('\n');
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body
+            });
