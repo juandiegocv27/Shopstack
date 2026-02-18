@@ -15,4 +15,24 @@ module "network" {
   private_subnet_cidrs = ["10.0.10.0/24", "10.0.11.0/24"]
 }
 
+module "ecr" {
+  source = "../../core/ecr"
+}
 
+module "secrets" {
+  source = "../../core/secrets"
+}
+
+module "iam" {
+  source = "../../core/iam"
+
+  ecr_repository_arn      = module.ecr.repository_arn
+  github_token_secret_arn = module.secrets.github_token_arn
+}
+
+module "codebuild" {
+  source = "../../core/codebuild"
+
+  codebuild_role_arn = module.iam.codebuild_role_arn
+  ecr_repository_url = module.ecr.repository_url
+}

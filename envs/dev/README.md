@@ -16,7 +16,11 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_codebuild"></a> [codebuild](#module\_codebuild) | ../../core/codebuild | n/a |
+| <a name="module_ecr"></a> [ecr](#module\_ecr) | ../../core/ecr | n/a |
+| <a name="module_iam"></a> [iam](#module\_iam) | ../../core/iam | n/a |
 | <a name="module_network"></a> [network](#module\_network) | ../../vpc | n/a |
+| <a name="module_secrets"></a> [secrets](#module\_secrets) | ../../core/secrets | n/a |
 
 ## Resources
 
