@@ -59,7 +59,7 @@ Every component is designed to be reproducible, auditable, and interview-demonst
 
 | Repository | Purpose |
 |---|---|
-| [`infra-terraform`](https://github.com/juandiegocv27/infra-terraform) | AWS infrastructure — ECR, IAM, Secrets Manager, CodeBuild via Terraform |
+| [`shopstack`](https://github.com/juandiegocv27/infra-terraform) | AWS infrastructure — ECR, IAM, Secrets Manager, CodeBuild via Terraform |
 | [`apps-sre`](https://github.com/juandiegocv27/apps-sre) | Application code + GitHub Actions CI pipeline |
 | [`cluster-gitops`](https://github.com/juandiegocv27/cluster-gitops) | Kubernetes GitOps config — Argo CD App-of-Apps, Kustomize overlays |
 
