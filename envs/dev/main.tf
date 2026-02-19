@@ -36,3 +36,7 @@ module "codebuild" {
   codebuild_role_arn = module.iam.codebuild_role_arn
   ecr_repository_url = module.ecr.repository_url
 }
+
+module "github_oidc" {
+  source = "../../core/github-oidc"
+}

@@ -18,6 +18,7 @@ No providers.
 |------|--------|---------|
 | <a name="module_codebuild"></a> [codebuild](#module\_codebuild) | ../../core/codebuild | n/a |
 | <a name="module_ecr"></a> [ecr](#module\_ecr) | ../../core/ecr | n/a |
+| <a name="module_github_oidc"></a> [github\_oidc](#module\_github\_oidc) | ../../core/github-oidc | n/a |
 | <a name="module_iam"></a> [iam](#module\_iam) | ../../core/iam | n/a |
 | <a name="module_network"></a> [network](#module\_network) | ../../vpc | n/a |
 | <a name="module_secrets"></a> [secrets](#module\_secrets) | ../../core/secrets | n/a |
